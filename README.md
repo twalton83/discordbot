@@ -10,6 +10,8 @@ This is my first go at a Discord Bot. I am in multiple servers that usually use 
     * List of stocks that are being followed
     * Addo to and remove from list
 * Good morning and good night messages, sort of like a turndown service and wake up call
+    * The will include the aforementioned updates
+    * The end of the day will include stats for the below habit tracking/task tracking
 * Habit tracking/task tracking
     * A daily/weekly breakdown
     * Time duration of tasks spent

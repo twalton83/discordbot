@@ -7,10 +7,10 @@ const {prefix, token, channelId} = require('./config.json')
 // create a new Discord client
 const client = new Discord.Client();
 client.commands = new Discord.Collection();
+const {timeEmbed} = require('./commands/scheduled')
 //returns an array of all file names
 //reads files from directory using fs 
 const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
-
 
 for (const file of commandFiles) {
 	const command = require(`./commands/${file}`);
@@ -22,12 +22,11 @@ client.login(token);
 // this event will only trigger one time after logging in
 client.once('ready', () => {
     console.log('Ready!');
-    let myChannel = client.channels.cache.get(channelId);
-    // About the 0 0 8 * * * pattern: its format is second minute hour month-day month week-day every ten seconds
-    let timeEmbed = new cron.CronJob('*/2 * * * * * ', () =>{
-        myChannel.send(`Good morning! It is 8:00am, today is`)
-    });
-    timeEmbed.start();
+    global.myChannel = client.channels.cache.get(channelId);
+    //starts cron jobs for each timed function on 'ready'
+    goodMorning.start();
+    goodNoon.start();
+    goodNight.start();
 });
 
 
