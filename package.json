@@ -19,6 +19,6 @@
   "dependencies": {
     "cron": "^1.8.2",
     "discord.js": "^12.1.1",
-    "request": "^2.88.2"
+    "postman-request": "^2.88.1-postman.22"
   }
 }

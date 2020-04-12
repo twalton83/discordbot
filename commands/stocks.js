@@ -1,4 +1,4 @@
-const request = require('request')
+const request = require('postman-request')
 const {stockKey} = require('../config.json');
 
 
@@ -15,9 +15,8 @@ module.exports = {
             message.channel.send('That is not a valid ticker.')
         } else {
             let lastRefreshed = body['Meta Data']['3. Last Refreshed'];
-            currentPrice = body['Time Series (5min)'][lastRefreshed]['4. close']
-            console.log(currentPrice)
-            message.channel.send(`${ticker} is currently ${currentPrice}.`)
+            currentPrice = parseInt(body['Time Series (5min)'][lastRefreshed]['4. close']).toFixed(2)
+            message.channel.send(`${ticker} is currently $${currentPrice}.`)
         };
     })
     }
