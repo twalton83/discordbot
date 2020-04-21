@@ -41,8 +41,7 @@ client.on('message', message => {
     const args = message.content.slice(process.env.prefix.length).split(/ +/);
     const command = args.shift().toLowerCase();
     if (!client.commands.has(command))
-      return;
-
+      message.reply("Not a valid command!");
     try {
         client.commands.get(command).execute(message, args);
     } catch (error) {
