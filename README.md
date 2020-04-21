@@ -8,10 +8,12 @@ This is my first go at a Discord Bot. I am in multiple servers that usually use 
 - [ ] Includes weather at morning, noon and night, and allergen updates in an Embed
 
 * Stock Updates
+- [X] Current pricing for any given stock 
 - [ ] List of stocks that are being followed
 - [ ] Add to and remove from list
 
 * Good morning and good night messages, sort of like a turndown service and wake up call
+- [X] Cron jobs for these messages
 - [ ] This will include the aforementioned updates
 - [ ] The end of the day will include stats for the below habit tracking/task tracking
 
