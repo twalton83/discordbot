@@ -35,7 +35,7 @@ client.once('ready', () => {
 client.on('message', message => {
 
     //if the bot sends a message, or the message doesn't start with a prefix, it returns
-    if (!message.content.startsWith(prefix) || message.author.bot) return; 
+    if (!message.content.startsWith(process.env.prefix) || message.author.bot) return; 
 
     //this slices the prefix out, returning an argument and splitting it at each space
     const args = message.content.slice(prefix.length).split(/ +/);

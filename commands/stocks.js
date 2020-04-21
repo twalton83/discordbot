@@ -1,5 +1,5 @@
 const request = require('postman-request')
-const {stockKey} = require('../config.json');
+//const {stockKey} = require('../config.json');
 
 
 module.exports = {
@@ -7,7 +7,7 @@ module.exports = {
     description: 'Current stock price',
     execute(message, args){
     let ticker = args
-    request(`https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=${ticker}&interval=5min&apikey=${stockKey}`, {json:true}, (err,res, body) =>{
+    request(`https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=${ticker}&interval=5min&apikey=${process.env.stockKey}`, {json:true}, (err,res, body) =>{
         if (err) { 
             return console.log(err); 
         }
