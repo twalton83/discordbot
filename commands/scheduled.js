@@ -13,15 +13,11 @@ let goodNight = new cron.CronJob('0 * 20 * * * ', () =>{
     checkWeather()
 });
 
-let testScheduler = new cron.CronJob('*/2 * * * * *', () =>{
-    checkWeather()
-});
 
 
 module.exports = {
     goodMorning,
     goodNoon,
     goodNight,
-    testScheduler
-    
+      
 }
