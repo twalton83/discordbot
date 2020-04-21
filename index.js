@@ -2,7 +2,7 @@
 const fs = require('fs');
 // require the discord.js module
 const Discord = require('discord.js');
-const {prefix, channelId} = require('./config.json')
+//const {prefix, channelId} = require('./config.json')
 // create a new Discord client
 const client = new Discord.Client();
 client.commands = new Discord.Collection();
