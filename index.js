@@ -38,7 +38,7 @@ client.on('message', message => {
     if (!message.content.startsWith(process.env.prefix) || message.author.bot) return; 
 
     //this slices the prefix out, returning an argument and splitting it at each space
-    const args = message.content.slice(prefix.length).split(/ +/);
+    const args = message.content.slice(process.env.prefix.length).split(/ +/);
     const command = args.shift().toLowerCase();
     if (!client.commands.has(command))
       return;
