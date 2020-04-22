@@ -14,6 +14,8 @@ function checkWeather(){
       myChannel.send(`Hi! It is currently 12:00 pm and it is ${temp} degrees.`)
     } else if (today.getHours() === 20){
         myChannel.send(`Hi! It is currently 8:00 pm and it is ${temp} degrees.`)
+    } else {
+      myChannel.send(`Hi, this works now`)
     }
   
   });
