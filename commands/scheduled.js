@@ -1,6 +1,6 @@
 const cron = require('cron');
 const {checkWeather} = require('./weather')
-
+const {myChannel} = require('../index')
 let goodMorning = new cron.CronJob('0 0 8 * * * ', () =>{
     console.log("Good morning queued.")
    checkWeather(myChannel)
