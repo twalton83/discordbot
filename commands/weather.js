@@ -9,11 +9,11 @@ function checkWeather(){
     let temp = Math.round(body.main.temp)
     console.log(temp)
     if (today.getHours() === 8){
-      myChannel.send(`Hi! It is currently 8:00 am and it is ${temp} degrees.`)
+      message.channel.send(`Hi! It is currently 8:00 am and it is ${temp} degrees.`)
     } else if (today.getHours() === 17){
       myChannel.send(`Hi! It is currently 12:00 pm and it is ${temp} degrees.`)
     } else if (today.getHours() === 20){
-        myChannel.send(`Hi! It is currently 8:00 pm and it is ${temp} degrees.`)
+        message.channel.send(`Hi! It is currently 8:00 pm and it is ${temp} degrees.`)
     }
   
   });

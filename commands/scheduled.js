@@ -1,7 +1,7 @@
 const cron = require('cron');
 const {checkWeather} = require('./weather')
 
-let goodMorning = new cron.CronJob('0 * 8 * * * ', () =>{
+let goodMorning = new cron.CronJob('0 15 9 * * * ', () =>{
     console.log("Good morning queued.")
    checkWeather()
 }, 'America/Los_Angeles');
