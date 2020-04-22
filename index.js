@@ -6,7 +6,7 @@ const Discord = require('discord.js');
 // create a new Discord client
 const client = new Discord.Client();
 client.commands = new Discord.Collection();
-const {goodMorning, goodNight, goodNoon, testScheduler} = require('./commands/scheduled')
+const {goodMorning, goodNight, goodNoon, testCron} = require('./commands/scheduled')
 //returns an array of all file names
 //reads files from directory using fs 
 const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
@@ -18,15 +18,17 @@ for (const file of commandFiles) {
 
 client.login(process.env.token);
 // when the client is ready, run this code
+
+const myChannel = client.channels.get('695066953148137555')
 // this event will only trigger one time after logging in
 client.once('ready', () => {
     console.log('Ready!');
-    global.myChannel = process.env.channelId;
 
     //starts cron jobs for each timed function on 'ready'
     goodMorning.start();
     goodNoon.start();
     goodNight.start();
+    testCron.start()
 
 });
 
@@ -54,3 +56,6 @@ client.on('message', message => {
     });
 
  
+    module.exports= {
+        myChannel
+    }
