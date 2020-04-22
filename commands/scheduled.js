@@ -1,6 +1,6 @@
 const cron = require('cron');
 const {checkWeather} = require('./weather')
-const {myChannel} = require('../index')
+
 let goodMorning = new cron.CronJob('0 0 8 * * * ', () =>{
     console.log("Good morning queued.")
    checkWeather(myChannel)
@@ -16,16 +16,10 @@ let goodNight = new cron.CronJob('0 0 20 * * * ', () =>{
     checkWeather(myChannel)
 }, 'America/Los_Angeles');
 
-let testCron = new cron.CronJob('15 * * * * * ', () =>{
-    console.log("Testing")
-    checkWeather(myChannel)
-}, 'America/Los_Angeles');
-
 
 module.exports = {
     goodMorning,
     goodNoon,
     goodNight,
-    testCron
       
 }

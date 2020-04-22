@@ -2,11 +2,11 @@
 const fs = require('fs');
 // require the discord.js module
 const Discord = require('discord.js');
-//const {prefix, channelId} = require('./config.json')
+//const {token, prefix} = require('./config.json')
 // create a new Discord client
 const client = new Discord.Client();
 client.commands = new Discord.Collection();
-const {goodMorning, goodNight, goodNoon, testCron} = require('./commands/scheduled')
+const {goodMorning, goodNight, goodNoon} = require('./commands/scheduled')
 //returns an array of all file names
 //reads files from directory using fs 
 const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
@@ -19,16 +19,17 @@ for (const file of commandFiles) {
 client.login(process.env.token);
 // when the client is ready, run this code
 
-const myChannel = client.channels.cache.get('695066953148137555')
+
 // this event will only trigger one time after logging in
 client.once('ready', () => {
     console.log('Ready!');
+    global.myChannel = client.channels.cache.get("695066953148137555")
 
+    console.log(myChannel)
     //starts cron jobs for each timed function on 'ready'
     goodMorning.start();
     goodNoon.start();
     goodNight.start();
-    testCron.start()
 
 });
 
@@ -42,8 +43,9 @@ client.on('message', message => {
     //this slices the prefix out, returning an argument and splitting it at each space
     const args = message.content.slice(process.env.prefix.length).split(/ +/);
     const command = args.shift().toLowerCase();
-    if (!client.commands.has(command))
-      message.reply("Not a valid command!");
+    if (!client.commands.has(command)){
+        message.reply("Not a valid command!");
+    }
     try {
         client.commands.get(command).execute(message, args);
     } catch (error) {
@@ -56,6 +58,3 @@ client.on('message', message => {
     });
 
  
-    module.exports= {
-        myChannel
-    }
