@@ -21,7 +21,7 @@ client.login(process.env.token);
 // this event will only trigger one time after logging in
 client.once('ready', () => {
     console.log('Ready!');
-    global.myChannel = client.channels.cache.get(channelId);
+    global.myChannel = process.env.channelId;
 
     //starts cron jobs for each timed function on 'ready'
     goodMorning.start();
