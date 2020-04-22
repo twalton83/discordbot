@@ -19,7 +19,7 @@ for (const file of commandFiles) {
 client.login(process.env.token);
 // when the client is ready, run this code
 
-const myChannel = client.channels.get('695066953148137555')
+const myChannel = client.channels.cache.get('695066953148137555')
 // this event will only trigger one time after logging in
 client.once('ready', () => {
     console.log('Ready!');
