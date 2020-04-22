@@ -2,7 +2,7 @@ const request = require('postman-request')
 //const {weatherKey} = require('../config.json');
 
 function checkWeather(){
-  request(`https://api.openweathermap.org/data/2.5/weather?q=Irvine,California&appid=${weatherKey}&units=imperial`, {json: true}, (err, res, body) => {
+  request(`https://api.openweathermap.org/data/2.5/weather?q=Irvine,California&appid=${process.env.weatherKey}&units=imperial`, {json: true}, (err, res, body) => {
     if (err) { return }
     let today = new Date();
     let temp = Math.round(body.main.temp)
